@@ -8,9 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ARSceneTemplate.unity
     guid: d047425da035ee948b0872f1abcf2449
+  - enabled: 0
+    path: Assets/Scenes/ARReycast.unity
+    guid: b5ecfd9e96ab81e42b173596281cabcf
+  - enabled: 0
+    path: Assets/Scenes/ARReycast.unity
+    guid: b5ecfd9e96ab81e42b173596281cabcf
+  - enabled: 1
+    path: Assets/Scenes/AR_Raycast_and_PlaneDetec.unity
+    guid: 843737a3a17010d42ad64d8a3b0e98a2
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: df2ba15014bf59e45b43d9e48afd6134, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
