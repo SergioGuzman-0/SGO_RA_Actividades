@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: Library01
+  m_EditorClassIdentifier: Unity.XR.ARSubsystems::UnityEngine.XR.ARSubsystems.XRReferenceImageLibrary
+  m_GuidLow: 4662514263542923637
+  m_GuidHigh: 6721140539333036181
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5325089552435532984
+      m_GuidHigh: 13507248377567472303
+    m_SerializedTextureGuid:
+      m_GuidLow: 6382801472147961065
+      m_GuidHigh: 6940631490437867816
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: IMG_Pollo
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5649151394108025037
+      m_GuidHigh: 4719068764337158568
+    m_SerializedTextureGuid:
+      m_GuidLow: 7688846477833397557
+      m_GuidHigh: 17114447555192178074
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: IMG_Hongo
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5632844405560539858
+      m_GuidHigh: 7561734423202676879
+    m_SerializedTextureGuid:
+      m_GuidLow: 4928127007609376053
+      m_GuidHigh: 15833483279312417257
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: IMG_Gato
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5703829724545723891
+      m_GuidHigh: 13316907884113524155
+    m_SerializedTextureGuid:
+      m_GuidLow: 1527996036383755669
+      m_GuidHigh: 5319024157232996984
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: IMG_Foca
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5481620156173253299
+      m_GuidHigh: 5157888855714579587
+    m_SerializedTextureGuid:
+      m_GuidLow: 6594427307361478203
+      m_GuidHigh: 6914271285003747339
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: IMG_Aguacate
+    m_Texture: {fileID: 0}
