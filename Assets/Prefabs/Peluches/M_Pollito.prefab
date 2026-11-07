@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7913535932508117992}
   - component: {fileID: 6520469634689307725}
   - component: {fileID: 9050453887868231815}
-  - component: {fileID: 5013109049015999400}
+  - component: {fileID: 7170019387987849189}
+  - component: {fileID: 4387414813014369105}
   m_Layer: 0
   m_Name: M_Pollito
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393036660170015058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0.000014610945, y: -6.8616957e-10, z: -0.00003703159}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!33 &6520469634689307725
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93,8 +94,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5013109049015999400
-CapsuleCollider:
+--- !u!65 &7170019387987849189
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,8 +112,19 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.022422351
-  m_Height: 0.0462175
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.05712859, y: 0.050498195, z: 0.043172657}
+  m_Center: {x: 0.0006777486, y: -0.0011514965, z: 0.0018754769}
+--- !u!114 &4387414813014369105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393036660170015058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2f286711f4d894a99344cce787f072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModelReference
+  modelData: {fileID: 11400000, guid: 20ee9af6dbdc44b4698a86576cd48ce8, type: 2}

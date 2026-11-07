@@ -1,102 +1,97 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class RaycastManager : MonoBehaviour
 {
-    [Header("Componentes AR")]
-    [SerializeField] private ARRaycastManager raycastManager;
-    [SerializeField] private ARPlaneManager planeManager;
+    [Header("Referencias de UI del Panel")]
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI descText;
+    [SerializeField] private TextMeshProUGUI categoryText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private Image iconImage;
 
-    [Header("Prefabs de Modelos")]
-    [SerializeField] private GameObject prefabHorizontal;
-    [SerializeField] private GameObject prefabVertical;
+    [Header("Estado Original / Default")]
+    [SerializeField] private string defaultStateText = "Selecciona un modelo...";
 
-    [Header("UI del Juego")]
-    [SerializeField] private TMP_Text estadoText;
-
-    // Variables de control
-    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    private int modeloSeleccionado = 0; 
-
-    private void OnEnable()
-    {
-        EnhancedTouchSupport.Enable();
-        planeManager.planesChanged += OnPlanesChanged; 
-    }
-
-    private void OnDisable()
-    {
-        EnhancedTouchSupport.Disable();
-        planeManager.planesChanged -= OnPlanesChanged;
-    }
+    private GameObject currentSelectedModel;
 
     private void Start()
     {
-        estadoText.text = "Escaneando entorno ...";
+        Debug.Log("¡El RaycastManager inició correctamente!");
+        ResetUI();
     }
 
-    // Botones de UI
-    public void SeleccionarModeloHorizontal()
+    private void Update()
     {
-        modeloSeleccionado = 0;
-    }
-
-    public void SeleccionarModeloVertical()
-    {
-        modeloSeleccionado = 1;
-    }
-    
-
-    
-    private void OnPlanesChanged(ARPlanesChangedEventArgs args)
-    {
-        if (args.added.Count > 0)
+        
+        if (Pointer.current != null && Pointer.current.press.wasPressedThisFrame)
         {
-            ARPlane planoNuevo = args.added[0];
-            if (planoNuevo.alignment == PlaneAlignment.Vertical)
-                estadoText.text = "Superficie vertical detectada!";
+            Vector2 inputPosition = Pointer.current.position.ReadValue();
+            Debug.Log("¡Toque/Clic detectado en las coordenadas: " + inputPosition + "!");
+
+            Ray ray = Camera.main.ScreenPointToRay(inputPosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("El rayo chocó contra el objeto: " + hit.collider.gameObject.name);
+
+                ModelReference modelRef = hit.collider.GetComponentInParent<ModelReference>();
+
+                if (modelRef != null && modelRef.modelData != null)
+                {
+                    Debug.Log("¡ModelReference encontrado! Mostrando datos...");
+                    currentSelectedModel = modelRef.gameObject;
+                    DisplayModelData(modelRef.modelData);
+                }
+                else //Pruebas para comprobar que el raycast funciona
+                {
+                    Debug.Log("El objeto tiene colisión, pero le falta el componente ModelReference o su Data.");
+                }
+            }
             else
-                estadoText.text = "Superficie horizontal detectada!";
+            {
+                Debug.Log("El rayo se disparó, pero no hizo contacto con ningún collider.");
+            }
         }
     }
 
-    void Update()
+    private void DisplayModelData(ModelData data)
     {
-        var activeTouches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
-        if (activeTouches.Count == 0) return;
+        if (nameText) nameText.text = "<b>Nombre:</b> " + data.modelName;
+        if (descText) descText.text = "<b>Descripción:</b> " + data.description;
+        if (categoryText) categoryText.text = "<b>Categoría:</b> " + data.category;
+        if (levelText) levelText.text = "<b>Nivel:</b> " + data.level;
 
-        var touch = activeTouches[0];
-
-        
-        if (EventSystem.current.IsPointerOverGameObject(touch.touchId)) return;
-
-        if (touch.phase != UnityEngine.InputSystem.TouchPhase.Began) return;
-
-        if (raycastManager.Raycast(touch.screenPosition, hits, TrackableType.PlaneWithinPolygon))
+        if (iconImage)
         {
-            Pose hitPose = hits[0].pose;
-            ARPlane hitPlane = planeManager.GetPlane(hits[0].trackableId);
+            iconImage.gameObject.SetActive(true);
+            iconImage.sprite = data.modelIcon;
+        }
+    }
 
-            if (hitPlane != null)
-            {
-                
-                if (hitPlane.alignment == PlaneAlignment.Vertical && modeloSeleccionado == 1)
-                {
-                    Instantiate(prefabVertical, hitPose.position, hitPose.rotation);
-                    estadoText.text = "Objeto colocado en plano vertical";
-                }
-                
-                else if (hitPlane.alignment != PlaneAlignment.Vertical && modeloSeleccionado == 0)
-                {
-                    Instantiate(prefabHorizontal, hitPose.position, hitPose.rotation);
-                    estadoText.text = "Objeto colocado en plano horizontal";
-                }
-            }
+    public void ResetUI()
+    {
+        if (nameText) nameText.text = defaultStateText;
+        if (descText) descText.text = "";
+        if (categoryText) descText.text = "";
+        if (levelText) levelText.text = "";
+
+        if (iconImage)
+        {
+            iconImage.gameObject.SetActive(false);
+        }
+
+        currentSelectedModel = null;
+    }
+
+    public void CheckIfSelectedModelLost(GameObject destroyedModel)
+    {
+        if (currentSelectedModel == destroyedModel)
+        {
+            ResetUI();
         }
     }
 }

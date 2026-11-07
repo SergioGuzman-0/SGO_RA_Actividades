@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3653997856964304178}
   - component: {fileID: 367676850268951191}
   - component: {fileID: 2521654517443503709}
-  - component: {fileID: 2702054751134780971}
+  - component: {fileID: 8971024758400941068}
+  - component: {fileID: 6293785634675027848}
   m_Layer: 0
   m_Name: M_Aguacate
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4178860089636358024}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!33 &367676850268951191
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -94,8 +95,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2702054751134780971
-CapsuleCollider:
+--- !u!65 &8971024758400941068
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,8 +113,19 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.03
-  m_Height: 0.045327984
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.031574436, y: 0.045328002, z: 0.024959492}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6293785634675027848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178860089636358024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2f286711f4d894a99344cce787f072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModelReference
+  modelData: {fileID: 11400000, guid: 060ed5672d6a7f34a9ea181c02f133d4, type: 2}
